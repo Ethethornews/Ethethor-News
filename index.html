@@ -5,80 +5,65 @@
 <title>Ethethor News</title>
 
 <style>
-body {
-  font-family: Arial;
-  margin: 0;
-  background: #f5f5f5;
-}
+body { font-family: Arial; margin:0; background:#f4f4f4; }
 
 header {
-  background: #0d0d0d;
-  color: white;
-  padding: 20px;
-  text-align: center;
+  background:#111;
+  color:white;
+  padding:20px;
+  text-align:center;
 }
 
 .container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 20px;
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
 }
-
-/* MANŞET */
-.manset {
-  background: white;
-  padding: 20px;
-  border-left: 6px solid red;
-  margin-bottom: 20px;
-}
-
-/* ALT MANŞET */
-.alt {
-  background: white;
-  padding: 15px;
-  border-left: 6px solid orange;
-  margin-bottom: 15px;
-}
-
-/* NORMAL HABER */
-.news {
-  background: white;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-left: 6px solid blue;
-}
-
-.tag {
-  font-size: 12px;
-  padding: 3px 8px;
-  color: white;
-  border-radius: 5px;
-}
-
-.red { background: red; }
-.orange { background: orange; }
-.blue { background: blue; }
 
 /* PANEL */
 .panel {
-  background: white;
-  padding: 15px;
-  margin-bottom: 20px;
+  background:white;
+  padding:15px;
+  margin-bottom:20px;
+  border-radius:10px;
 }
 
 input, textarea, select {
-  width: 100%;
-  margin: 5px 0;
-  padding: 10px;
+  width:100%;
+  padding:10px;
+  margin:5px 0;
 }
 
 button {
-  padding: 10px;
-  background: black;
-  color: white;
-  border: none;
-  cursor: pointer;
+  padding:10px;
+  background:black;
+  color:white;
+  border:none;
+  cursor:pointer;
 }
+
+/* HABERLER */
+.news {
+  background:white;
+  padding:15px;
+  margin-bottom:10px;
+  border-radius:10px;
+}
+
+.manset { border-left:6px solid red; }
+.alt { border-left:6px solid orange; }
+.normal { border-left:6px solid blue; }
+
+.tag {
+  font-size:12px;
+  padding:3px 7px;
+  color:white;
+  border-radius:5px;
+}
+
+.red { background:red; }
+.orange { background:orange; }
+.blue { background:blue; }
 
 </style>
 </head>
@@ -87,14 +72,14 @@ button {
 
 <header>
 <h1>Ethethor News</h1>
-<p>Profesyonel Haber Platformu</p>
+<p>Profesyonel Haber Sistemi</p>
 </header>
 
 <div class="container">
 
-<!-- ADMIN PANEL -->
+<!-- PANEL -->
 <div class="panel">
-<h2>Haber Paneli</h2>
+<h2>Haber Ekle</h2>
 
 <input id="title" placeholder="Başlık">
 <textarea id="content" placeholder="Haber içeriği"></textarea>
@@ -111,7 +96,7 @@ button {
 <!-- HABERLER -->
 <div id="mansetArea"></div>
 <div id="altArea"></div>
-<div id="newsArea"></div>
+<div id="normalArea"></div>
 
 </div>
 
@@ -122,9 +107,9 @@ function addNews() {
   const content = document.getElementById("content").value;
   const type = document.getElementById("type").value;
 
-  const data = JSON.parse(localStorage.getItem("news") || "[]");
+  let data = JSON.parse(localStorage.getItem("news") || "[]");
 
-  data.unshift({ title, content, type });
+  data.unshift({title,content,type});
 
   localStorage.setItem("news", JSON.stringify(data));
 
@@ -132,36 +117,37 @@ function addNews() {
 }
 
 function loadNews() {
-  const mansetArea = document.getElementById("mansetArea");
-  const altArea = document.getElementById("altArea");
-  const newsArea = document.getElementById("newsArea");
 
-  const data = JSON.parse(localStorage.getItem("news") || "[]");
+  let data = JSON.parse(localStorage.getItem("news") || "[]");
 
-  mansetArea.innerHTML = "";
-  altArea.innerHTML = "";
-  newsArea.innerHTML = "";
+  const manset = document.getElementById("mansetArea");
+  const alt = document.getElementById("altArea");
+  const normal = document.getElementById("normalArea");
 
-  data.forEach(n => {
+  manset.innerHTML="";
+  alt.innerHTML="";
+  normal.innerHTML="";
 
-    const div = document.createElement("div");
+  data.forEach(n=>{
 
-    if (n.type === "manset") {
-      div.className = "manset";
-      div.innerHTML = `<span class="tag red">MANŞET</span><h2>${n.title}</h2><p>${n.content}</p>`;
-      mansetArea.appendChild(div);
+    let div=document.createElement("div");
+
+    if(n.type==="manset"){
+      div.className="news manset";
+      div.innerHTML=`<span class="tag red">MANŞET</span><h2>${n.title}</h2><p>${n.content}</p>`;
+      manset.appendChild(div);
     }
 
-    else if (n.type === "alt") {
-      div.className = "alt";
-      div.innerHTML = `<span class="tag orange">ALT MANŞET</span><h3>${n.title}</h3><p>${n.content}</p>`;
-      altArea.appendChild(div);
+    else if(n.type==="alt"){
+      div.className="news alt";
+      div.innerHTML=`<span class="tag orange">ALT</span><h3>${n.title}</h3><p>${n.content}</p>`;
+      alt.appendChild(div);
     }
 
     else {
-      div.className = "news";
-      div.innerHTML = `<span class="tag blue">HABER</span><h4>${n.title}</h4><p>${n.content}</p>`;
-      newsArea.appendChild(div);
+      div.className="news normal";
+      div.innerHTML=`<span class="tag blue">HABER</span><h4>${n.title}</h4><p>${n.content}</p>`;
+      normal.appendChild(div);
     }
 
   });
