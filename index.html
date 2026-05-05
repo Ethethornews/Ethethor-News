@@ -1,26 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="google-site-verification" content="7e6535c307aab2">
   <meta name="description" content="Ethethor News - Son dakika haberler">
   <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Ethethor News</title>
-</head>
 
   <style>
-  <body>
+    body {
+      font-family: Arial;
+      margin: 0;
+      background: #f4f4f4;
+    }
 
-<header>
-  <h1>Ethethor News</h1>
-  <p>Profesyonel Haber Sistemi</p>
-</header>
+    header {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
 
-<div class="news">
-  <h2>Manşet Haber</h2>
-  <p>Ethethor News yayına başladı.</p>
-</div>
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .panel,
+    .news {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      background: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .manset {
+      border-left: 6px solid red;
+    }
+
+    .alt {
+      border-left: 6px solid orange;
+    }
+
+    .normal {
+      border-left: 6px solid blue;
+    }
+  </style>
+</head>
 
 <body>
 
@@ -31,75 +78,37 @@
 
 <div class="container">
 
-<!-- PANEL -->
-<div class="panel">
-  <h2>Haber Ekle</h2>
+  <div class="news manset">
+    <h2>Manşet Haber</h2>
+    <p>Ethethor News yayına başladı.</p>
+  </div>
 
-  <input id="title" placeholder="Başlık">
-  <textarea id="content" placeholder="Haber içeriği"></textarea>
+  <div class="panel">
+    <h2>Haber Ekle</h2>
 
-  <select id="type">
-    <option value="manset">Manşet</option>
-    <option value="alt">Alt Manşet</option>
-    <option value="normal">Normal</option>
-  </select>
+    <input type="text" id="title" placeholder="Başlık">
 
-  <button onclick="addNews()">Yayınla</button>
-</div>
+    <textarea id="content" placeholder="Haber içeriği"></textarea>
 
-<!-- HABER ALANLARI -->
-<div id="mansetArea"></div>
-<div id="altArea"></div>
-<div id="normalArea"></div>
+    <select id="type">
+      <option value="manset">Manşet</option>
+      <option value="alt">Alt Manşet</option>
+      <option value="normal">Normal Haber</option>
+    </select>
+
+    <button onclick="addNews()">Yayınla</button>
+  </div>
+
+  <div id="mansetArea"></div>
+  <div id="altArea"></div>
+  <div id="normalArea"></div>
 
 </div>
 
 <script>
 
-function loadNews() {
+function addNews() {
 
-  let news = [];
-
-  try {
-    news = JSON.parse(localStorage.getItem("news") || "[]");
-  } catch (e) {
-    console.log("Hata düzeltildi:", e);
-    localStorage.removeItem("news");
-    news = [];
-  }
-
-  const mansetArea = document.getElementById("mansetArea");
-  const altArea = document.getElementById("altArea");
-  const normalArea = document.getElementById("normalArea");
-
-  mansetArea.innerHTML = "";
-  altArea.innerHTML = "";
-  normalArea.innerHTML = "";
-
-  news.forEach(n => {
-
-    let div = document.createElement("div");
-
-    if (n.type === "manset") {
-      div.className = "news manset";
-      div.innerHTML = `<h2>${n.title}</h2><p>${n.content}</p>`;
-      mansetArea.appendChild(div);
-    }
-
-    else if (n.type === "alt") {
-      div.className = "news alt";
-      div.innerHTML = `<h3>${n.title}</h3><p>${n.content}</p>`;
-      altArea.appendChild(div);
-    }
-
-    else {
-      div.className = "news normal";
-      div.innerHTML = `<h4>${n.title}</h4><p>${n.content}</p>`;
-      normalArea.appendChild(div);
-    }
-
-  });
-}
   const title = document.getElementById("title").value;
   const content = document.getElementById("content").value;
   const type = document.getElementById("type").value;
@@ -109,9 +118,19 @@ function loadNews() {
     return;
   }
 
-  let news = JSON.parse(localStorage.getItem("news") || "[]");
+  let news = [];
 
-  news.unshift({ title, content, type });
+  try {
+    news = JSON.parse(localStorage.getItem("news")) || [];
+  } catch(e) {
+    news = [];
+  }
+
+  news.unshift({
+    title,
+    content,
+    type
+  });
 
   localStorage.setItem("news", JSON.stringify(news));
 
@@ -123,10 +142,8 @@ function loadNews() {
   let news = [];
 
   try {
-    news = JSON.parse(localStorage.getItem("news") || "[]");
-  } catch (e) {
-    console.log("Hata düzeltildi:", e);
-    localStorage.removeItem("news");
+    news = JSON.parse(localStorage.getItem("news")) || [];
+  } catch(e) {
     news = [];
   }
 
@@ -140,27 +157,30 @@ function loadNews() {
 
   news.forEach(n => {
 
-    let div = document.createElement("div");
+    const div = document.createElement("div");
+
+    div.classList.add("news");
+    div.classList.add(n.type);
+
+    div.innerHTML = `
+      <h2>${n.title}</h2>
+      <p>${n.content}</p>
+    `;
 
     if (n.type === "manset") {
-      div.className = "news manset";
-      div.innerHTML = `<h2>${n.title}</h2><p>${n.content}</p>`;
       mansetArea.appendChild(div);
     }
 
     else if (n.type === "alt") {
-      div.className = "news alt";
-      div.innerHTML = `<h3>${n.title}</h3><p>${n.content}</p>`;
       altArea.appendChild(div);
     }
 
     else {
-      div.className = "news normal";
-      div.innerHTML = `<h4>${n.title}</h4><p>${n.content}</p>`;
       normalArea.appendChild(div);
     }
 
   });
+
 }
 
 loadNews();
