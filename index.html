@@ -234,11 +234,65 @@
       .hero{grid-template-columns:1fr}
       nav{display:none}
     }
+.news-img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
 
+.card-content{
+  padding:12px;
+}
   </style>
 
 </head>
+<script>
 
+function loadNews(){
+
+  let news = JSON.parse(localStorage.getItem("news") || "[]");
+
+  const newsArea = document.getElementById("newsArea");
+
+  newsArea.innerHTML = "";
+
+  news.forEach(n => {
+
+    let card = document.createElement("div");
+
+    card.className = "card";
+
+    card.innerHTML = `
+
+      <img src="${n.image}" class="news-img">
+
+      <div class="card-content">
+
+        <div class="cat">
+          ${n.category.toUpperCase()}
+        </div>
+
+        <div class="title">
+          ${n.title}
+        </div>
+
+        <div class="text">
+          ${n.content}
+        </div>
+
+      </div>
+
+    `;
+
+    newsArea.appendChild(card);
+
+  });
+
+}
+
+loadNews();
+
+</script>
 <body>
 
 <header>
