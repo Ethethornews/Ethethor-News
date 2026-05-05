@@ -2,142 +2,205 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Panel</title>
 
   <style>
-    body {
-      font-family: Arial;
-      background: #0f0f0f;
-      color: white;
-      margin: 0;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial;
+    }
+
+    body{
+      background:#101010;
+      color:white;
     }
 
     /* ÜST BAR */
-    .top {
-      background: #111;
-      padding: 15px;
-      text-align: center;
-      font-size: 18px;
-      border-bottom: 2px solid red;
+
+    .topbar{
+      background:#0b0b0b;
+      border-bottom:3px solid red;
+      padding:18px;
+      text-align:center;
+      font-size:22px;
+      font-weight:bold;
+      letter-spacing:1px;
     }
 
-    /* GİRİŞ KÜÇÜK BAR */
-    .login {
-      text-align: center;
-      padding: 15px;
-      background: #1a1a1a;
-      font-size: 14px;
+    /* LOGIN */
+
+    .login-box{
+      width:350px;
+      margin:80px auto;
+      background:#1a1a1a;
+      padding:25px;
+      border-radius:12px;
+      text-align:center;
+      box-shadow:0 0 15px rgba(0,0,0,0.4);
     }
 
-    input {
-      padding: 8px;
-      width: 200px;
-      border: none;
-      border-radius: 5px;
+    .login-box h2{
+      margin-bottom:20px;
     }
 
-    button {
-      padding: 8px 12px;
-      background: red;
-      border: none;
-      color: white;
-      cursor: pointer;
-      margin-left: 5px;
+    input, textarea, select{
+      width:100%;
+      padding:12px;
+      margin-top:12px;
+      border:none;
+      border-radius:8px;
+      background:#2a2a2a;
+      color:white;
+      font-size:14px;
+    }
+
+    textarea{
+      height:140px;
+      resize:none;
+    }
+
+    button{
+      width:100%;
+      padding:12px;
+      margin-top:15px;
+      background:red;
+      color:white;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:15px;
+      font-weight:bold;
+    }
+
+    button:hover{
+      opacity:0.9;
     }
 
     /* PANEL */
-    .panel {
-      max-width: 600px;
-      margin: 30px auto;
-      background: #1c1c1c;
-      padding: 20px;
-      border-radius: 10px;
-      display: none;
+
+    .panel{
+      display:none;
+      max-width:800px;
+      margin:40px auto;
+      background:#1a1a1a;
+      padding:25px;
+      border-radius:12px;
+      box-shadow:0 0 15px rgba(0,0,0,0.4);
     }
 
-    input, textarea, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 6px;
+    .panel h2{
+      margin-bottom:20px;
     }
 
-    textarea {
-      height: 120px;
-      resize: none;
+    .info{
+      margin-top:15px;
+      color:#aaa;
+      font-size:13px;
     }
 
-    .save {
-      margin-top: 15px;
-      width: 100%;
-      background: red;
-      border: none;
-      padding: 12px;
-      color: white;
-      cursor: pointer;
-    }
   </style>
 </head>
 
 <body>
 
-<div class="top">
-  ADMIN PANEL
+<div class="topbar">
+  ETETHOR NEWS ADMIN PANEL
 </div>
 
-<!-- KÜÇÜK GİRİŞ -->
-<div class="login" id="loginBox">
-  <input type="password" id="pass" placeholder="Şifre gir">
-  <button onclick="login()">Giriş</button>
+<!-- LOGIN -->
+
+<div class="login-box" id="loginBox">
+
+  <h2>Yönetici Girişi</h2>
+
+  <input type="password" id="password" placeholder="Şifre">
+
+  <button onclick="login()">Giriş Yap</button>
+
 </div>
 
-<!-- HABER PANELİ -->
+<!-- PANEL -->
+
 <div class="panel" id="panel">
 
-  <h3>Haber Ekle</h3>
+  <h2>Haber Ekle</h2>
 
-  <input id="title" placeholder="Başlık">
-  <textarea id="content" placeholder="İçerik"></textarea>
-  <input id="img" placeholder="Resim URL">
+  <input type="text" id="title" placeholder="Haber Başlığı">
 
-  <select id="type">
+  <textarea id="content" placeholder="Haber İçeriği"></textarea>
+
+  <input type="text" id="image" placeholder="Resim URL">
+
+  <select id="category">
     <option value="manset">Manşet</option>
-    <option value="alt">Alt Manşet</option>
-    <option value="normal">Normal</option>
+    <option value="ekonomi">Ekonomi</option>
+    <option value="spor">Spor</option>
+    <option value="magazin">Magazin</option>
+    <option value="asayis">Asayiş</option>
+    <option value="dunya">Dünya</option>
+    <option value="guncel">Güncel</option>
   </select>
 
-  <button class="save" onclick="addNews()">Haberi Yayınla</button>
+  <button onclick="addNews()">Haberi Yayınla</button>
+
+  <div class="info">
+    Eklenen haberler tarayıcı hafızasında saklanır.
+  </div>
 
 </div>
 
 <script>
 
-function login() {
-  let p = document.getElementById("pass").value;
+function login(){
 
-  if (p === "EtH2026!#News") {
+  let pass = document.getElementById("password").value;
+
+  if(pass === "EtH2026!#News"){
+
     document.getElementById("loginBox").style.display = "none";
+
     document.getElementById("panel").style.display = "block";
-  } else {
-    alert("Hatalı şifre");
+
+  }else{
+
+    alert("Şifre yanlış");
+
   }
+
 }
 
-function addNews() {
+function addNews(){
 
   let title = document.getElementById("title").value;
   let content = document.getElementById("content").value;
-  let img = document.getElementById("img").value;
-  let type = document.getElementById("type").value;
+  let image = document.getElementById("image").value;
+  let category = document.getElementById("category").value;
+
+  if(title === "" || content === ""){
+
+    alert("Boş alan bırakma");
+
+    return;
+
+  }
 
   let news = JSON.parse(localStorage.getItem("news") || "[]");
 
-  news.unshift({title, content, img, type});
+  news.unshift({
+    title,
+    content,
+    image,
+    category
+  });
 
   localStorage.setItem("news", JSON.stringify(news));
 
-  alert("Haber eklendi!");
+  alert("Haber başarıyla eklendi!");
+
 }
 
 </script>
