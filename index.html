@@ -120,7 +120,15 @@ function loadNews() {
 
 function loadNews() {
 
-  let news = JSON.parse(localStorage.getItem("news") || "[]");
+  let news = [];
+
+  try {
+    news = JSON.parse(localStorage.getItem("news") || "[]");
+  } catch (e) {
+    console.log("Hata düzeltildi:", e);
+    localStorage.removeItem("news");
+    news = [];
+  }
 
   const mansetArea = document.getElementById("mansetArea");
   const altArea = document.getElementById("altArea");
@@ -136,19 +144,19 @@ function loadNews() {
 
     if (n.type === "manset") {
       div.className = "news manset";
-      div.innerHTML = `<span class="tag red">MANŞET</span><h2>${n.title}</h2><p>${n.content}</p>`;
+      div.innerHTML = `<h2>${n.title}</h2><p>${n.content}</p>`;
       mansetArea.appendChild(div);
     }
 
     else if (n.type === "alt") {
       div.className = "news alt";
-      div.innerHTML = `<span class="tag orange">ALT MANŞET</span><h3>${n.title}</h3><p>${n.content}</p>`;
+      div.innerHTML = `<h3>${n.title}</h3><p>${n.content}</p>`;
       altArea.appendChild(div);
     }
 
     else {
       div.className = "news normal";
-      div.innerHTML = `<span class="tag blue">HABER</span><h4>${n.title}</h4><p>${n.content}</p>`;
+      div.innerHTML = `<h4>${n.title}</h4><p>${n.content}</p>`;
       normalArea.appendChild(div);
     }
 
