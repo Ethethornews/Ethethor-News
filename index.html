@@ -2,7 +2,9 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
+
   <meta name="google-site-verification" content="7e6535c307aab2">
+
   <meta name="description" content="Ethethor News - Son dakika haberler">
   <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,48 +13,30 @@
 
   <style>
     body {
-      font-family: Arial;
       margin: 0;
       background: #f4f4f4;
+      font-family: Arial, sans-serif;
     }
 
     header {
       background: #111;
       color: white;
       text-align: center;
-      padding: 20px;
+      padding: 25px;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 950px;
       margin: auto;
       padding: 20px;
     }
 
-    .panel,
     .news {
       background: white;
-      padding: 15px;
-      border-radius: 10px;
+      padding: 20px;
       margin-bottom: 20px;
-    }
-
-    input,
-    textarea,
-    select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      box-sizing: border-box;
-    }
-
-    button {
-      padding: 10px 20px;
-      margin-top: 10px;
-      background: black;
-      color: white;
-      border: none;
-      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .manset {
@@ -66,6 +50,31 @@
     .normal {
       border-left: 6px solid blue;
     }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 10px;
+      color: white;
+      border-radius: 5px;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .red {
+      background: red;
+    }
+
+    .orange {
+      background: orange;
+    }
+
+    .blue {
+      background: blue;
+    }
+
+    h2, h3, h4 {
+      margin-top: 10px;
+    }
   </style>
 </head>
 
@@ -78,114 +87,45 @@
 
 <div class="container">
 
+  <!-- MANŞET HABER -->
+
   <div class="news manset">
-    <h2>Manşet Haber</h2>
-    <p>Ethethor News yayına başladı.</p>
+    <span class="tag red">MANŞET</span>
+
+    <h2>Ethethor News Yayında</h2>
+
+    <p>
+      Ethethor News resmi olarak yayın hayatına başladı.
+      Son dakika gelişmeleri, teknoloji haberleri ve gündem içerikleri okuyucularla buluşuyor.
+    </p>
   </div>
 
-  <div class="panel">
-    <h2>Haber Ekle</h2>
+  <!-- ALT MANŞET -->
 
-    <input type="text" id="title" placeholder="Başlık">
+  <div class="news alt">
+    <span class="tag orange">ALT MANŞET</span>
 
-    <textarea id="content" placeholder="Haber içeriği"></textarea>
+    <h3>Yeni Haber Sistemi Aktif Edildi</h3>
 
-    <select id="type">
-      <option value="manset">Manşet</option>
-      <option value="alt">Alt Manşet</option>
-      <option value="normal">Normal Haber</option>
-    </select>
-
-    <button onclick="addNews()">Yayınla</button>
+    <p>
+      Yeni haber sistemi sayesinde içerikler daha hızlı ve düzenli şekilde yayınlanabilecek.
+    </p>
   </div>
 
-  <div id="mansetArea"></div>
-  <div id="altArea"></div>
-  <div id="normalArea"></div>
+  <!-- NORMAL HABER -->
+
+  <div class="news normal">
+    <span class="tag blue">HABER</span>
+
+    <h4>Google Index Süreci Başladı</h4>
+
+    <p>
+      Site için sitemap ve SEO ayarları tamamlandı.
+      Arama motoru index süreci devam ediyor.
+    </p>
+  </div>
 
 </div>
-
-<script>
-
-function addNews() {
-
-  const title = document.getElementById("title").value;
-  const content = document.getElementById("content").value;
-  const type = document.getElementById("type").value;
-
-  if (!title || !content) {
-    alert("Boş bırakma!");
-    return;
-  }
-
-  let news = [];
-
-  try {
-    news = JSON.parse(localStorage.getItem("news")) || [];
-  } catch(e) {
-    news = [];
-  }
-
-  news.unshift({
-    title,
-    content,
-    type
-  });
-
-  localStorage.setItem("news", JSON.stringify(news));
-
-  loadNews();
-}
-
-function loadNews() {
-
-  let news = [];
-
-  try {
-    news = JSON.parse(localStorage.getItem("news")) || [];
-  } catch(e) {
-    news = [];
-  }
-
-  const mansetArea = document.getElementById("mansetArea");
-  const altArea = document.getElementById("altArea");
-  const normalArea = document.getElementById("normalArea");
-
-  mansetArea.innerHTML = "";
-  altArea.innerHTML = "";
-  normalArea.innerHTML = "";
-
-  news.forEach(n => {
-
-    const div = document.createElement("div");
-
-    div.classList.add("news");
-    div.classList.add(n.type);
-
-    div.innerHTML = `
-      <h2>${n.title}</h2>
-      <p>${n.content}</p>
-    `;
-
-    if (n.type === "manset") {
-      mansetArea.appendChild(div);
-    }
-
-    else if (n.type === "alt") {
-      altArea.appendChild(div);
-    }
-
-    else {
-      normalArea.appendChild(div);
-    }
-
-  });
-
-}
-
-loadNews();
-
-</script>
 
 </body>
 </html>
