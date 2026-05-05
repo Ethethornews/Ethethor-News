@@ -1,12 +1,13 @@
-# Ethethor News – Profesyonel Haber Panel Tasarımı
+# Ethethor News – CNN Tarzı Gelişmiş Haber Sitesi Tasarımı
 
 ```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
+  <meta name="google-site-verification" content="7e6535c307aab2">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ethethor News - Son dakika haberler ve gündem gelişmeleri">
+  <meta name="description" content="Ethethor News - Son dakika haberler, gündem ve teknoloji gelişmeleri">
   <meta name="robots" content="index, follow">
 
   <title>Ethethor News</title>
@@ -21,86 +22,98 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #f1f3f8;
+      background: #eceff3;
       color: #111;
     }
 
-    header {
-      background: #111;
+    .top-header {
+      background: #0d0d0d;
       color: white;
-      padding: 20px;
-      border-bottom: 5px solid red;
+      padding: 10px 0;
+      border-bottom: 4px solid red;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
 
-    .topbar {
+    .top-container {
+      max-width: 1400px;
+      margin: auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1200px;
-      margin: auto;
+      padding: 0 20px;
     }
 
     .logo {
-      font-size: 32px;
+      font-size: 38px;
       font-weight: bold;
       color: white;
+      letter-spacing: 1px;
     }
 
     .menu {
       display: flex;
-      gap: 20px;
+      gap: 25px;
     }
 
     .menu a {
       color: white;
       text-decoration: none;
       font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .menu a:hover {
+      color: red;
     }
 
     .breaking {
       background: red;
       color: white;
-      padding: 12px;
+      padding: 12px 20px;
       font-weight: bold;
       overflow: hidden;
       white-space: nowrap;
+      font-size: 15px;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 30px auto;
+    .hero {
+      max-width: 1400px;
+      margin: 25px auto;
       display: grid;
       grid-template-columns: 2fr 1fr;
-      gap: 20px;
-      padding: 0 15px;
+      gap: 25px;
+      padding: 0 20px;
     }
 
-    .main-news {
+    .hero-main {
       background: white;
-      border-radius: 14px;
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
     }
 
-    .main-news img {
+    .hero-main img {
       width: 100%;
-      height: 400px;
+      height: 520px;
       object-fit: cover;
     }
 
-    .main-content {
-      padding: 25px;
+    .hero-content {
+      padding: 30px;
     }
 
-    .main-content h1 {
-      font-size: 34px;
-      margin-bottom: 15px;
+    .hero-content h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      line-height: 1.2;
     }
 
-    .main-content p {
+    .hero-content p {
+      line-height: 1.8;
       color: #444;
-      line-height: 1.7;
-      font-size: 16px;
+      font-size: 17px;
     }
 
     .sidebar {
@@ -109,81 +122,102 @@
       gap: 20px;
     }
 
-    .side-card {
+    .sidebar-card {
       background: white;
-      border-radius: 12px;
-      padding: 18px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      border-radius: 15px;
+      padding: 22px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
     }
 
-    .side-card h3 {
-      margin-bottom: 10px;
-      font-size: 18px;
+    .sidebar-card h3 {
+      margin-bottom: 15px;
+      border-left: 5px solid red;
+      padding-left: 10px;
+      font-size: 22px;
+    }
+
+    .sidebar-card p {
+      margin-bottom: 12px;
+      line-height: 1.5;
+      color: #444;
+    }
+
+    .section-title {
+      max-width: 1400px;
+      margin: 20px auto;
+      padding: 0 20px;
+      font-size: 30px;
+      font-weight: bold;
+      border-left: 8px solid red;
+      padding-left: 15px;
     }
 
     .news-grid {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: auto;
-      padding: 0 15px 40px;
+      padding: 0 20px 50px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
     }
 
     .card {
       background: white;
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
       transition: 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
     }
 
     .card img {
       width: 100%;
-      height: 180px;
+      height: 220px;
       object-fit: cover;
     }
 
     .card-content {
-      padding: 18px;
+      padding: 22px;
     }
 
     .card-content h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
+      font-size: 24px;
+      margin-bottom: 12px;
+      line-height: 1.4;
     }
 
     .card-content p {
       color: #555;
-      line-height: 1.5;
-      font-size: 14px;
+      line-height: 1.7;
+      font-size: 15px;
     }
 
     footer {
       background: #111;
       color: white;
       text-align: center;
-      padding: 25px;
+      padding: 35px;
       margin-top: 30px;
+      font-size: 14px;
     }
 
-    @media(max-width: 900px) {
+    @media(max-width: 1000px) {
 
-      .container {
+      .hero {
         grid-template-columns: 1fr;
       }
 
-      .main-content h1 {
-        font-size: 28px;
+      .hero-content h1 {
+        font-size: 32px;
       }
 
       .menu {
         display: none;
       }
+
     }
 
   </style>
@@ -191,87 +225,103 @@
 
 <body>
 
-<header>
-  <div class="topbar">
+<div class="top-header">
+
+  <div class="top-container">
 
     <div class="logo">Ethethor News</div>
 
     <div class="menu">
       <a href="#">Gündem</a>
-      <a href="#">Teknoloji</a>
       <a href="#">Dünya</a>
+      <a href="#">Teknoloji</a>
       <a href="#">Ekonomi</a>
       <a href="#">Spor</a>
+      <a href="#">Magazin</a>
     </div>
 
   </div>
-</header>
 
-<div class="breaking">
-  SON DAKİKA • Ethethor News yeni profesyonel haber sistemi yayında.
 </div>
 
-<div class="container">
+<div class="breaking">
+  SON DAKİKA • Türkiye gündeminde sıcak gelişmeler yaşanıyor • Teknoloji dünyasında yeni yapay zeka hamlesi geldi.
+</div>
 
-  <div class="main-news">
+<div class="hero">
 
-    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1200&auto=format&fit=crop" alt="haber">
+  <div class="hero-main">
 
-    <div class="main-content">
-      <h1>Ethethor News Resmen Yayında</h1>
+    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1400&auto=format&fit=crop">
+
+    <div class="hero-content">
+
+      <h1>Ethethor News Türkiye'nin Yeni Dijital Haber Platformu Oldu</h1>
 
       <p>
-        Yeni nesil haber altyapısıyla yayın hayatına başlayan Ethethor News,
-        gündem, teknoloji ve son dakika gelişmelerini modern arayüzle kullanıcılarına sunuyor.
+        Son dakika gelişmeleri, gündem haberleri, dünya olayları ve teknoloji içerikleri modern tasarım anlayışıyla okuyuculara sunuluyor.
       </p>
+
     </div>
 
   </div>
 
   <div class="sidebar">
 
-    <div class="side-card">
+    <div class="sidebar-card">
       <h3>En Çok Okunanlar</h3>
-      <p>• Son dakika gelişmeleri</p>
-      <p>• Teknoloji haberleri</p>
-      <p>• Yapay zeka gündemi</p>
+      <p>• Son dakika gelişmeleri gündemde.</p>
+      <p>• Yapay zeka sistemleri büyüyor.</p>
+      <p>• Dünya piyasalarında hareketlilik.</p>
+      <p>• Teknoloji şirketlerinden yeni hamleler.</p>
     </div>
 
-    <div class="side-card">
-      <h3>Gündem</h3>
-      <p>Türkiye ve dünya gündeminden sıcak gelişmeler.</p>
+    <div class="sidebar-card">
+      <h3>Canlı Gündem</h3>
+      <p>Türkiye ve dünya gündemindeki sıcak gelişmeler anbean aktarılıyor.</p>
     </div>
 
   </div>
 
 </div>
 
+<div class="section-title">Gündem Haberleri</div>
+
 <div class="news-grid">
 
   <div class="card">
-    <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=1200&auto=format&fit=crop" alt="haber">
+    <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=1200&auto=format&fit=crop">
 
     <div class="card-content">
-      <h2>Yapay Zeka Teknolojileri Gündemde</h2>
-      <p>Yeni nesil yapay zeka sistemleri dünya çapında dikkat çekmeye devam ediyor.</p>
+      <h2>Teknoloji Dünyasında Büyük Rekabet Başladı</h2>
+
+      <p>
+        Yeni nesil yapay zeka sistemleri ve teknoloji yatırımları küresel çapta dikkat çekiyor.
+      </p>
     </div>
   </div>
 
   <div class="card">
-    <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop" alt="haber">
+    <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop">
 
     <div class="card-content">
-      <h2>Ekonomi Piyasalarında Hareketlilik</h2>
-      <p>Küresel piyasalarda yaşanan gelişmeler yatırımcıların odağında yer aldı.</p>
+      <h2>Ekonomide Kritik Gelişmeler Yaşanıyor</h2>
+
+      <p>
+        Küresel piyasalarda yaşanan son hareketlilik yatırımcıların odağında yer aldı.
+      </p>
     </div>
   </div>
 
   <div class="card">
-    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop" alt="haber">
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
 
     <div class="card-content">
-      <h2>Teknoloji Dünyasında Büyük Rekabet</h2>
-      <p>Yeni ürün lansmanları teknoloji şirketleri arasındaki yarışı hızlandırdı.</p>
+      <h2>Dünya Gündeminde Kritik Zirve</h2>
+
+      <p>
+        Uluslararası toplantılar ve siyasi gelişmeler dünya gündeminde öne çıkıyor.
+      </p>
     </div>
   </div>
 
