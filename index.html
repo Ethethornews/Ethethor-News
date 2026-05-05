@@ -56,7 +56,50 @@
 
 <script>
 
-function addNews() {
+function loadNews() {
+
+  let news = [];
+
+  try {
+    news = JSON.parse(localStorage.getItem("news") || "[]");
+  } catch (e) {
+    console.log("Hata düzeltildi:", e);
+    localStorage.removeItem("news");
+    news = [];
+  }
+
+  const mansetArea = document.getElementById("mansetArea");
+  const altArea = document.getElementById("altArea");
+  const normalArea = document.getElementById("normalArea");
+
+  mansetArea.innerHTML = "";
+  altArea.innerHTML = "";
+  normalArea.innerHTML = "";
+
+  news.forEach(n => {
+
+    let div = document.createElement("div");
+
+    if (n.type === "manset") {
+      div.className = "news manset";
+      div.innerHTML = `<h2>${n.title}</h2><p>${n.content}</p>`;
+      mansetArea.appendChild(div);
+    }
+
+    else if (n.type === "alt") {
+      div.className = "news alt";
+      div.innerHTML = `<h3>${n.title}</h3><p>${n.content}</p>`;
+      altArea.appendChild(div);
+    }
+
+    else {
+      div.className = "news normal";
+      div.innerHTML = `<h4>${n.title}</h4><p>${n.content}</p>`;
+      normalArea.appendChild(div);
+    }
+
+  });
+}
   const title = document.getElementById("title").value;
   const content = document.getElementById("content").value;
   const type = document.getElementById("type").value;
