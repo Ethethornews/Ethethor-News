@@ -7,22 +7,52 @@
   <style>
     body {
       font-family: Arial;
-      background: #111;
+      background: #0f0f0f;
       color: white;
       margin: 0;
-      padding: 20px;
     }
 
-    .box {
-      max-width: 600px;
-      margin: auto;
-      background: #222;
-      padding: 20px;
-      border-radius: 12px;
-    }
-
-    h2 {
+    /* ÜST BAR */
+    .top {
+      background: #111;
+      padding: 15px;
       text-align: center;
+      font-size: 18px;
+      border-bottom: 2px solid red;
+    }
+
+    /* GİRİŞ KÜÇÜK BAR */
+    .login {
+      text-align: center;
+      padding: 15px;
+      background: #1a1a1a;
+      font-size: 14px;
+    }
+
+    input {
+      padding: 8px;
+      width: 200px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 8px 12px;
+      background: red;
+      border: none;
+      color: white;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+
+    /* PANEL */
+    .panel {
+      max-width: 600px;
+      margin: 30px auto;
+      background: #1c1c1c;
+      padding: 20px;
+      border-radius: 10px;
+      display: none;
     }
 
     input, textarea, select {
@@ -33,32 +63,42 @@
       border-radius: 6px;
     }
 
-    button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 15px;
-      background: red;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
+    textarea {
+      height: 120px;
+      resize: none;
     }
 
-    button:hover {
-      background: darkred;
+    .save {
+      margin-top: 15px;
+      width: 100%;
+      background: red;
+      border: none;
+      padding: 12px;
+      color: white;
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
 
-<div class="box">
-  <h2>Haber Ekle</h2>
+<div class="top">
+  ADMIN PANEL
+</div>
 
-  <input id="title" placeholder="Haber Başlığı">
+<!-- KÜÇÜK GİRİŞ -->
+<div class="login" id="loginBox">
+  <input type="password" id="pass" placeholder="Şifre gir">
+  <button onclick="login()">Giriş</button>
+</div>
 
-  <textarea id="content" placeholder="Haber İçeriği"></textarea>
+<!-- HABER PANELİ -->
+<div class="panel" id="panel">
 
+  <h3>Haber Ekle</h3>
+
+  <input id="title" placeholder="Başlık">
+  <textarea id="content" placeholder="İçerik"></textarea>
   <input id="img" placeholder="Resim URL">
 
   <select id="type">
@@ -67,39 +107,37 @@
     <option value="normal">Normal</option>
   </select>
 
-  <button onclick="addNews()">Haberi Yayınla</button>
+  <button class="save" onclick="addNews()">Haberi Yayınla</button>
+
 </div>
 
 <script>
 
+function login() {
+  let p = document.getElementById("pass").value;
+
+  if (p === "EtH2026!#News") {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("panel").style.display = "block";
+  } else {
+    alert("Hatalı şifre");
+  }
+}
+
 function addNews() {
 
-  const title = document.getElementById("title").value;
-  const content = document.getElementById("content").value;
-  const img = document.getElementById("img").value;
-  const type = document.getElementById("type").value;
-
-  if (!title || !content || !img) {
-    alert("Tüm alanları doldur!");
-    return;
-  }
+  let title = document.getElementById("title").value;
+  let content = document.getElementById("content").value;
+  let img = document.getElementById("img").value;
+  let type = document.getElementById("type").value;
 
   let news = JSON.parse(localStorage.getItem("news") || "[]");
 
-  news.unshift({
-    title,
-    content,
-    img,
-    type
-  });
+  news.unshift({title, content, img, type});
 
   localStorage.setItem("news", JSON.stringify(news));
 
   alert("Haber eklendi!");
-
-  document.getElementById("title").value = "";
-  document.getElementById("content").value = "";
-  document.getElementById("img").value = "";
 }
 
 </script>
