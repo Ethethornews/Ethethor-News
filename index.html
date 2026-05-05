@@ -5,36 +5,63 @@
   <meta charset="UTF-8">
   <meta name="google-site-verification" content="7e6535c307aab2">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ethethor News - Son dakika haberler">
+  <meta name="description" content="Güncel haberler, ekonomi, spor, dünya, magazin ve asayiş gelişmeleri">
   <meta name="robots" content="index, follow">
   <title>Ethethor News</title>
 
   <style>
     *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 
-    body{background:#eef1f5;color:#111}
+    body{background:#f2f4f7;color:#111}
 
+    /* TOP BAR */
     header{
-      background:#0d0d0d;
+      background:#0b0b0b;
       color:#fff;
-      padding:18px;
-      text-align:center;
-      font-size:28px;
-      font-weight:bold;
-      border-bottom:4px solid red;
+      padding:15px 0;
+      border-bottom:3px solid red;
+      position:sticky;
+      top:0;
+      z-index:999;
     }
 
+    .wrap{
+      max-width:1300px;
+      margin:auto;
+      padding:0 15px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:bold;
+      letter-spacing:1px;
+    }
+
+    nav a{
+      color:#fff;
+      text-decoration:none;
+      margin-left:18px;
+      font-size:14px;
+    }
+
+    nav a:hover{color:red}
+
+    /* BREAKING */
     .breaking{
       background:red;
       color:#fff;
       padding:10px;
       font-weight:bold;
-      white-space:nowrap;
       overflow:hidden;
+      white-space:nowrap;
     }
 
-    .container{
-      max-width:1200px;
+    /* HERO */
+    .hero{
+      max-width:1300px;
       margin:20px auto;
       display:grid;
       grid-template-columns:2fr 1fr;
@@ -42,28 +69,44 @@
       padding:0 15px;
     }
 
-    .main{
+    .main-news{
       background:#fff;
-      border-radius:15px;
-      padding:15px;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 2px 10px rgba(0,0,0,0.08);
     }
 
-    .main img{width:100%;border-radius:12px}
+    .main-news img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+    }
 
-    .main h1{margin:15px 0}
-
-    .right{
-      background:#fff;
-      border-radius:15px;
+    .main-news h1{
       padding:15px;
+      font-size:26px;
+    }
+
+    .main-news p{
+      padding:0 15px 15px;
+      color:#444;
+      line-height:1.6;
+    }
+
+    /* SIDE */
+    .side{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
     }
 
     .mini{
+      background:#fff;
       display:flex;
       gap:10px;
-      margin-bottom:15px;
-      border-bottom:1px solid #ddd;
-      padding-bottom:10px;
+      padding:10px;
+      border-radius:10px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.06);
     }
 
     .mini img{
@@ -73,56 +116,66 @@
       border-radius:8px;
     }
 
-    .grid{
-      max-width:1200px;
-      margin:20px auto;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:15px;
+    .mini h4{font-size:14px}
+
+    /* SECTIONS */
+    .section-title{
+      max-width:1300px;
+      margin:20px auto 10px;
       padding:0 15px;
+      font-size:20px;
+      border-left:6px solid red;
+      padding-left:10px;
+    }
+
+    .grid{
+      max-width:1300px;
+      margin:auto;
+      padding:0 15px 30px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:15px;
     }
 
     .card{
       background:#fff;
-      border-radius:12px;
+      border-radius:10px;
       overflow:hidden;
+      box-shadow:0 2px 8px rgba(0,0,0,0.06);
+      transition:.3s;
     }
 
-    .card img{width:100%;height:180px;object-fit:cover}
+    .card:hover{transform:translateY(-4px)}
+
+    .card img{
+      width:100%;
+      height:160px;
+      object-fit:cover;
+    }
 
     .card div{padding:10px}
 
-    /* ADMIN */
-    .adminBox{
-      max-width:400px;
-      margin:30px auto;
-      background:#fff;
-      padding:20px;
-      border-radius:12px;
-      text-align:center;
+    .cat{
+      font-size:12px;
+      color:red;
+      font-weight:bold;
     }
 
-    .adminPanel{
-      display:none;
-      max-width:900px;
-      margin:20px auto;
-      background:#fff;
-      padding:15px;
-      border-radius:12px;
-    }
+    .title{font-size:16px;margin-top:5px}
 
-    input,textarea{
-      width:100%;
-      padding:10px;
-      margin:8px 0;
-    }
+    .text{font-size:13px;color:#555;margin-top:5px}
 
-    button{
-      padding:10px;
-      background:black;
+    footer{
+      background:#111;
       color:#fff;
-      border:none;
-      cursor:pointer;
+      text-align:center;
+      padding:25px;
+      margin-top:20px;
+    }
+
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr}
+      nav{display:none}
     }
 
   </style>
@@ -131,37 +184,48 @@
 
 <body>
 
-<header>Ethethor News</header>
+<header>
+  <div class="wrap">
+    <div class="logo">Ethethor News</div>
+    <nav>
+      <a href="#">Güncel</a>
+      <a href="#">Ekonomi</a>
+      <a href="#">Spor</a>
+      <a href="#">Magazin</a>
+      <a href="#">Asayiş</a>
+      <a href="#">Dünya</a>
+    </nav>
+  </div>
+</header>
 
-<div class="breaking">SON DAKİKA • Haber sistemi aktif</div>
+<div class="breaking">
+  SON DAKİKA • Türkiye ve dünyadan önemli gelişmeler anlık olarak aktarılıyor...
+</div>
 
-<!-- MAIN NEWS -->
+<div class="hero">
 
-<div class="container">
-
-  <div class="main">
+  <div class="main-news">
     <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c">
-    <h1>Gündem Haber Başlığı</h1>
-    <p>En son gelişmeler burada yayınlanır.</p>
+    <h1>Büyük Ekonomik Gelişmeler Gündemde</h1>
+    <p>Ekonomi, dünya piyasaları ve yatırım araçlarında önemli hareketlilik yaşanıyor.</p>
   </div>
 
-  <div class="right">
-    <h3>Sağ Manşetler</h3>
+  <div class="side">
 
 ```
 <div class="mini">
   <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a">
-  <p>Ekonomi gündemi hareketli</p>
+  <h4>Ekonomide sıcak gelişme</h4>
 </div>
 
 <div class="mini">
   <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3">
-  <p>Dünya liderleri zirvede</p>
+  <h4>Dünya liderleri zirvede</h4>
 </div>
 
 <div class="mini">
   <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e">
-  <p>Teknolojide yeni dönem</p>
+  <h4>Teknoloji dünyası büyüyor</h4>
 </div>
 ```
 
@@ -169,79 +233,42 @@
 
 </div>
 
-<!-- NEWS GRID -->
+<div class="section-title">Güncel Haberler</div>
 
-<div class="grid" id="newsArea"></div>
+<div class="grid">
 
-<!-- ADMIN LOGIN -->
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a">
+    <div>
+      <div class="cat">EKONOMİ</div>
+      <div class="title">Piyasalarda hareketlilik</div>
+      <div class="text">Küresel piyasalarda dalgalanmalar devam ediyor.</div>
+    </div>
+  </div>
 
-<div class="adminBox" id="loginBox">
-  <h3>Admin Giriş</h3>
-  <input type="password" id="pass" placeholder="Şifre">
-  <button onclick="login()">Giriş</button>
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e">
+    <div>
+      <div class="cat">TEKNOLOJİ</div>
+      <div class="title">Yapay zeka büyüyor</div>
+      <div class="text">Yeni nesil AI sistemleri dikkat çekiyor.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3">
+    <div>
+      <div class="cat">DÜNYA</div>
+      <div class="title">Kritik zirve toplantısı</div>
+      <div class="text">Dünya liderleri önemli kararlar aldı.</div>
+    </div>
+  </div>
+
 </div>
 
-<!-- ADMIN PANEL -->
-
-<div class="adminPanel" id="adminPanel">
-  <h3>Haber Ekle</h3>
-  <input id="title" placeholder="Başlık">
-  <input id="img" placeholder="Resim URL">
-  <textarea id="content" placeholder="Haber içeriği"></textarea>
-  <button onclick="addNews()">Ekle</button>
-</div>
-
-<script>
-
-let password = "1234";
-
-function login(){
-  let p = document.getElementById("pass").value;
-  if(p === password){
-    document.getElementById("loginBox").style.display="none";
-    document.getElementById("adminPanel").style.display="block";
-  } else {
-    alert("Hatalı şifre");
-  }
-}
-
-function addNews(){
-  let t = document.getElementById("title").value;
-  let i = document.getElementById("img").value;
-  let c = document.getElementById("content").value;
-
-  let news = JSON.parse(localStorage.getItem("news")||"[]");
-
-  news.unshift({t,i,c});
-
-  localStorage.setItem("news",JSON.stringify(news));
-
-  load();
-}
-
-function load(){
-
-  let news = JSON.parse(localStorage.getItem("news")||"[]");
-
-  let area = document.getElementById("newsArea");
-  area.innerHTML="";
-
-  news.forEach(n=>{
-    area.innerHTML += `
-      <div class="card">
-        <img src="${n.i}">
-        <div>
-          <h3>${n.t}</h3>
-          <p>${n.c}</p>
-        </div>
-      </div>
-    `;
-  });
-}
-
-load();
-
-</script>
+<footer>
+  © 2026 Ethethor News - Tüm Hakları Saklıdır
+</footer>
 
 </body>
 </html>
