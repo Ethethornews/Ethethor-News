@@ -1,131 +1,286 @@
+# Ethethor News – Profesyonel Haber Panel Tasarımı
+
+```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-
-  <meta name="google-site-verification" content="7e6535c307aab2">
-
-  <meta name="description" content="Ethethor News - Son dakika haberler">
-  <meta name="robots" content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ethethor News - Son dakika haberler ve gündem gelişmeleri">
+  <meta name="robots" content="index, follow">
 
   <title>Ethethor News</title>
 
   <style>
-    body {
+
+    * {
       margin: 0;
-      background: #f4f4f4;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: Arial, sans-serif;
+      background: #f1f3f8;
+      color: #111;
     }
 
     header {
       background: #111;
       color: white;
-      text-align: center;
-      padding: 25px;
+      padding: 20px;
+      border-bottom: 5px solid red;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .breaking {
+      background: red;
+      color: white;
+      padding: 12px;
+      font-weight: bold;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     .container {
-      max-width: 950px;
-      margin: auto;
-      padding: 20px;
+      max-width: 1200px;
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      padding: 0 15px;
     }
 
-    .news {
+    .main-news {
       background: white;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     }
 
-    .manset {
-      border-left: 6px solid red;
+    .main-news img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
     }
 
-    .alt {
-      border-left: 6px solid orange;
+    .main-content {
+      padding: 25px;
     }
 
-    .normal {
-      border-left: 6px solid blue;
+    .main-content h1 {
+      font-size: 34px;
+      margin-bottom: 15px;
     }
 
-    .tag {
-      display: inline-block;
-      padding: 5px 10px;
-      color: white;
-      border-radius: 5px;
-      font-size: 12px;
+    .main-content p {
+      color: #444;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .side-card {
+      background: white;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .side-card h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .news-grid {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 15px 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 18px;
+    }
+
+    .card-content h2 {
+      font-size: 20px;
       margin-bottom: 10px;
     }
 
-    .red {
-      background: red;
+    .card-content p {
+      color: #555;
+      line-height: 1.5;
+      font-size: 14px;
     }
 
-    .orange {
-      background: orange;
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
     }
 
-    .blue {
-      background: blue;
+    @media(max-width: 900px) {
+
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .main-content h1 {
+        font-size: 28px;
+      }
+
+      .menu {
+        display: none;
+      }
     }
 
-    h2, h3, h4 {
-      margin-top: 10px;
-    }
   </style>
 </head>
 
 <body>
 
 <header>
-  <h1>Ethethor News</h1>
-  <p>Profesyonel Haber Sistemi</p>
+  <div class="topbar">
+
+    <div class="logo">Ethethor News</div>
+
+    <div class="menu">
+      <a href="#">Gündem</a>
+      <a href="#">Teknoloji</a>
+      <a href="#">Dünya</a>
+      <a href="#">Ekonomi</a>
+      <a href="#">Spor</a>
+    </div>
+
+  </div>
 </header>
+
+<div class="breaking">
+  SON DAKİKA • Ethethor News yeni profesyonel haber sistemi yayında.
+</div>
 
 <div class="container">
 
-  <!-- MANŞET HABER -->
+  <div class="main-news">
 
-  <div class="news manset">
-    <span class="tag red">MANŞET</span>
+    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1200&auto=format&fit=crop" alt="haber">
 
-    <h2>Ethethor News Yayında</h2>
+    <div class="main-content">
+      <h1>Ethethor News Resmen Yayında</h1>
 
-    <p>
-      Ethethor News resmi olarak yayın hayatına başladı.
-      Son dakika gelişmeleri, teknoloji haberleri ve gündem içerikleri okuyucularla buluşuyor.
-    </p>
+      <p>
+        Yeni nesil haber altyapısıyla yayın hayatına başlayan Ethethor News,
+        gündem, teknoloji ve son dakika gelişmelerini modern arayüzle kullanıcılarına sunuyor.
+      </p>
+    </div>
+
   </div>
 
-  <!-- ALT MANŞET -->
+  <div class="sidebar">
 
-  <div class="news alt">
-    <span class="tag orange">ALT MANŞET</span>
+    <div class="side-card">
+      <h3>En Çok Okunanlar</h3>
+      <p>• Son dakika gelişmeleri</p>
+      <p>• Teknoloji haberleri</p>
+      <p>• Yapay zeka gündemi</p>
+    </div>
 
-    <h3>Yeni Haber Sistemi Aktif Edildi</h3>
+    <div class="side-card">
+      <h3>Gündem</h3>
+      <p>Türkiye ve dünya gündeminden sıcak gelişmeler.</p>
+    </div>
 
-    <p>
-      Yeni haber sistemi sayesinde içerikler daha hızlı ve düzenli şekilde yayınlanabilecek.
-    </p>
-  </div>
-
-  <!-- NORMAL HABER -->
-
-  <div class="news normal">
-    <span class="tag blue">HABER</span>
-
-    <h4>Google Index Süreci Başladı</h4>
-
-    <p>
-      Site için sitemap ve SEO ayarları tamamlandı.
-      Arama motoru index süreci devam ediyor.
-    </p>
   </div>
 
 </div>
 
+<div class="news-grid">
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=1200&auto=format&fit=crop" alt="haber">
+
+    <div class="card-content">
+      <h2>Yapay Zeka Teknolojileri Gündemde</h2>
+      <p>Yeni nesil yapay zeka sistemleri dünya çapında dikkat çekmeye devam ediyor.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop" alt="haber">
+
+    <div class="card-content">
+      <h2>Ekonomi Piyasalarında Hareketlilik</h2>
+      <p>Küresel piyasalarda yaşanan gelişmeler yatırımcıların odağında yer aldı.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop" alt="haber">
+
+    <div class="card-content">
+      <h2>Teknoloji Dünyasında Büyük Rekabet</h2>
+      <p>Yeni ürün lansmanları teknoloji şirketleri arasındaki yarışı hızlandırdı.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 Ethethor News — Tüm Hakları Saklıdır.
+</footer>
+
 </body>
 </html>
+```
