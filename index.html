@@ -2,40 +2,74 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Ethethor News Panel</title>
+<title>Ethethor News</title>
 
 <style>
 body {
   font-family: Arial;
   margin: 0;
-  background: #f4f4f4;
+  background: #f5f5f5;
 }
 
 header {
-  background: #111;
+  background: #0d0d0d;
   color: white;
   padding: 20px;
   text-align: center;
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
   padding: 20px;
 }
+
+/* MANŞET */
+.manset {
+  background: white;
+  padding: 20px;
+  border-left: 6px solid red;
+  margin-bottom: 20px;
+}
+
+/* ALT MANŞET */
+.alt {
+  background: white;
+  padding: 15px;
+  border-left: 6px solid orange;
+  margin-bottom: 15px;
+}
+
+/* NORMAL HABER */
+.news {
+  background: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-left: 6px solid blue;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 3px 8px;
+  color: white;
+  border-radius: 5px;
+}
+
+.red { background: red; }
+.orange { background: orange; }
+.blue { background: blue; }
 
 /* PANEL */
 .panel {
   background: white;
   padding: 15px;
-  border-radius: 10px;
   margin-bottom: 20px;
 }
 
 input, textarea, select {
   width: 100%;
-  padding: 10px;
   margin: 5px 0;
+  padding: 10px;
 }
 
 button {
@@ -46,38 +80,6 @@ button {
   cursor: pointer;
 }
 
-/* HABERLER */
-.news {
-  background: white;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-}
-
-.manset {
-  border-left: 6px solid red;
-}
-
-.alt-manset {
-  border-left: 6px solid orange;
-}
-
-.standart {
-  border-left: 6px solid blue;
-}
-
-.tag {
-  font-size: 12px;
-  padding: 3px 7px;
-  color: white;
-  border-radius: 5px;
-  display: inline-block;
-}
-
-.red { background: red; }
-.orange { background: orange; }
-.blue { background: blue; }
-
 </style>
 </head>
 
@@ -85,29 +87,31 @@ button {
 
 <header>
 <h1>Ethethor News</h1>
-<p>Profesyonel Haber Panel Sistemi</p>
+<p>Profesyonel Haber Platformu</p>
 </header>
 
 <div class="container">
 
-<!-- PANEL -->
+<!-- ADMIN PANEL -->
 <div class="panel">
-<h2>Haber Ekle</h2>
+<h2>Haber Paneli</h2>
 
-<input id="title" placeholder="Haber Başlığı">
-<textarea id="content" placeholder="Haber İçeriği"></textarea>
+<input id="title" placeholder="Başlık">
+<textarea id="content" placeholder="Haber içeriği"></textarea>
 
 <select id="type">
   <option value="manset">Manşet</option>
   <option value="alt">Alt Manşet</option>
-  <option value="standart">Standart</option>
+  <option value="normal">Normal</option>
 </select>
 
 <button onclick="addNews()">Yayınla</button>
 </div>
 
-<!-- HABER LİSTESİ -->
-<div id="newsList"></div>
+<!-- HABERLER -->
+<div id="mansetArea"></div>
+<div id="altArea"></div>
+<div id="newsArea"></div>
 
 </div>
 
@@ -118,51 +122,48 @@ function addNews() {
   const content = document.getElementById("content").value;
   const type = document.getElementById("type").value;
 
-  if (!title || !content) return alert("Boş bırakma!");
+  const data = JSON.parse(localStorage.getItem("news") || "[]");
 
-  const news = JSON.parse(localStorage.getItem("news") || "[]");
+  data.unshift({ title, content, type });
 
-  news.unshift({ title, content, type });
-
-  localStorage.setItem("news", JSON.stringify(news));
+  localStorage.setItem("news", JSON.stringify(data));
 
   loadNews();
 }
 
 function loadNews() {
-  const list = document.getElementById("newsList");
-  const news = JSON.parse(localStorage.getItem("news") || "[]");
+  const mansetArea = document.getElementById("mansetArea");
+  const altArea = document.getElementById("altArea");
+  const newsArea = document.getElementById("newsArea");
 
-  list.innerHTML = "";
+  const data = JSON.parse(localStorage.getItem("news") || "[]");
 
-  news.forEach(n => {
+  mansetArea.innerHTML = "";
+  altArea.innerHTML = "";
+  newsArea.innerHTML = "";
 
-    let className = "news standart";
-    let tagClass = "blue";
-    let tagText = "Standart";
-
-    if (n.type === "manset") {
-      className = "news manset";
-      tagClass = "red";
-      tagText = "Manşet";
-    }
-
-    if (n.type === "alt") {
-      className = "news alt-manset";
-      tagClass = "orange";
-      tagText = "Alt Manşet";
-    }
+  data.forEach(n => {
 
     const div = document.createElement("div");
-    div.className = className;
 
-    div.innerHTML = `
-      <span class="tag ${tagClass}">${tagText}</span>
-      <h3>${n.title}</h3>
-      <p>${n.content}</p>
-    `;
+    if (n.type === "manset") {
+      div.className = "manset";
+      div.innerHTML = `<span class="tag red">MANŞET</span><h2>${n.title}</h2><p>${n.content}</p>`;
+      mansetArea.appendChild(div);
+    }
 
-    list.appendChild(div);
+    else if (n.type === "alt") {
+      div.className = "alt";
+      div.innerHTML = `<span class="tag orange">ALT MANŞET</span><h3>${n.title}</h3><p>${n.content}</p>`;
+      altArea.appendChild(div);
+    }
+
+    else {
+      div.className = "news";
+      div.innerHTML = `<span class="tag blue">HABER</span><h4>${n.title}</h4><p>${n.content}</p>`;
+      newsArea.appendChild(div);
+    }
+
   });
 }
 
