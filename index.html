@@ -1,7 +1,5 @@
-# Ethethor News – CNN Tarzı Gelişmiş Haber Sitesi Tasarımı
-
-```html
 <!DOCTYPE html>
+
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
@@ -142,6 +140,27 @@
       color: #444;
     }
 
+    .mini-news {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 18px;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 12px;
+    }
+
+    .mini-news img {
+      width: 110px;
+      height: 75px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .mini-news h4 {
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
     .section-title {
       max-width: 1400px;
       margin: 20px auto;
@@ -221,6 +240,7 @@
     }
 
   </style>
+
 </head>
 
 <body>
@@ -229,16 +249,18 @@
 
   <div class="top-container">
 
-    <div class="logo">Ethethor News</div>
+```
+<div class="logo">Ethethor News</div>
 
-    <div class="menu">
-      <a href="#">Gündem</a>
-      <a href="#">Dünya</a>
-      <a href="#">Teknoloji</a>
-      <a href="#">Ekonomi</a>
-      <a href="#">Spor</a>
-      <a href="#">Magazin</a>
-    </div>
+<div class="menu">
+  <a href="#">Gündem</a>
+  <a href="#">Dünya</a>
+  <a href="#">Teknoloji</a>
+  <a href="#">Ekonomi</a>
+  <a href="#">Spor</a>
+  <a href="#">Magazin</a>
+</div>
+```
 
   </div>
 
@@ -252,34 +274,56 @@
 
   <div class="hero-main">
 
-    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1400&auto=format&fit=crop">
+```
+<img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1400&auto=format&fit=crop">
 
-    <div class="hero-content">
+<div class="hero-content">
 
-      <h1>Ethethor News Türkiye'nin Yeni Dijital Haber Platformu Oldu</h1>
+  <h1>Ethethor News Türkiye'nin Yeni Dijital Haber Platformu Oldu</h1>
 
-      <p>
-        Son dakika gelişmeleri, gündem haberleri, dünya olayları ve teknoloji içerikleri modern tasarım anlayışıyla okuyuculara sunuluyor.
-      </p>
+  <p>
+    Son dakika gelişmeleri, gündem haberleri, dünya olayları ve teknoloji içerikleri modern tasarım anlayışıyla okuyuculara sunuluyor.
+  </p>
 
-    </div>
+</div>
+```
 
   </div>
 
   <div class="sidebar">
 
-    <div class="sidebar-card">
-      <h3>En Çok Okunanlar</h3>
-      <p>• Son dakika gelişmeleri gündemde.</p>
-      <p>• Yapay zeka sistemleri büyüyor.</p>
-      <p>• Dünya piyasalarında hareketlilik.</p>
-      <p>• Teknoloji şirketlerinden yeni hamleler.</p>
+```
+<div class="sidebar-card">
+  <div class="mini-news">
+    <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=600&auto=format&fit=crop">
+    <div>
+      <h4>Teknoloji dünyasında yeni rekabet başladı</h4>
     </div>
+  </div>
 
-    <div class="sidebar-card">
-      <h3>Canlı Gündem</h3>
-      <p>Türkiye ve dünya gündemindeki sıcak gelişmeler anbean aktarılıyor.</p>
+  <div class="mini-news">
+    <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=600&auto=format&fit=crop">
+    <div>
+      <h4>Ekonomide sıcak gelişmeler yaşanıyor</h4>
     </div>
+  </div>
+
+  <div class="mini-news">
+    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600&auto=format&fit=crop">
+    <div>
+      <h4>Dünya gündeminde kritik zirve</h4>
+    </div>
+  </div>
+
+  <div class="mini-news">
+    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=600&auto=format&fit=crop">
+    <div>
+      <h4>Son dakika gelişmeleri peş peşe geliyor</h4>
+    </div>
+  </div>
+
+</div>
+```
 
   </div>
 
@@ -292,37 +336,46 @@
   <div class="card">
     <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=1200&auto=format&fit=crop">
 
-    <div class="card-content">
-      <h2>Teknoloji Dünyasında Büyük Rekabet Başladı</h2>
+```
+<div class="card-content">
+  <h2>Teknoloji Dünyasında Büyük Rekabet Başladı</h2>
 
-      <p>
-        Yeni nesil yapay zeka sistemleri ve teknoloji yatırımları küresel çapta dikkat çekiyor.
-      </p>
-    </div>
+  <p>
+    Yeni nesil yapay zeka sistemleri ve teknoloji yatırımları küresel çapta dikkat çekiyor.
+  </p>
+</div>
+```
+
   </div>
 
   <div class="card">
     <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1200&auto=format&fit=crop">
 
-    <div class="card-content">
-      <h2>Ekonomide Kritik Gelişmeler Yaşanıyor</h2>
+```
+<div class="card-content">
+  <h2>Ekonomide Kritik Gelişmeler Yaşanıyor</h2>
 
-      <p>
-        Küresel piyasalarda yaşanan son hareketlilik yatırımcıların odağında yer aldı.
-      </p>
-    </div>
+  <p>
+    Küresel piyasalarda yaşanan son hareketlilik yatırımcıların odağında yer aldı.
+  </p>
+</div>
+```
+
   </div>
 
   <div class="card">
     <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
 
-    <div class="card-content">
-      <h2>Dünya Gündeminde Kritik Zirve</h2>
+```
+<div class="card-content">
+  <h2>Dünya Gündeminde Kritik Zirve</h2>
 
-      <p>
-        Uluslararası toplantılar ve siyasi gelişmeler dünya gündeminde öne çıkıyor.
-      </p>
-    </div>
+  <p>
+    Uluslararası toplantılar ve siyasi gelişmeler dünya gündeminde öne çıkıyor.
+  </p>
+</div>
+```
+
   </div>
 
 </div>
@@ -333,4 +386,3 @@
 
 </body>
 </html>
-```
