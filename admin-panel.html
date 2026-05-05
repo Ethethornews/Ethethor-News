@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #111;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .box {
+      max-width: 600px;
+      margin: auto;
+      background: #222;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 6px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: red;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: darkred;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>Haber Ekle</h2>
+
+  <input id="title" placeholder="Haber Başlığı">
+
+  <textarea id="content" placeholder="Haber İçeriği"></textarea>
+
+  <input id="img" placeholder="Resim URL">
+
+  <select id="type">
+    <option value="manset">Manşet</option>
+    <option value="alt">Alt Manşet</option>
+    <option value="normal">Normal</option>
+  </select>
+
+  <button onclick="addNews()">Haberi Yayınla</button>
+</div>
+
+<script>
+
+function addNews() {
+
+  const title = document.getElementById("title").value;
+  const content = document.getElementById("content").value;
+  const img = document.getElementById("img").value;
+  const type = document.getElementById("type").value;
+
+  if (!title || !content || !img) {
+    alert("Tüm alanları doldur!");
+    return;
+  }
+
+  let news = JSON.parse(localStorage.getItem("news") || "[]");
+
+  news.unshift({
+    title,
+    content,
+    img,
+    type
+  });
+
+  localStorage.setItem("news", JSON.stringify(news));
+
+  alert("Haber eklendi!");
+
+  document.getElementById("title").value = "";
+  document.getElementById("content").value = "";
+  document.getElementById("img").value = "";
+}
+
+</script>
+
+</body>
+</html>
