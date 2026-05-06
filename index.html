@@ -1,62 +1,34 @@
 <!DOCTYPE html>
-
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="google-site-verification" content="7e6535c307aab2">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Güncel haberler, ekonomi, spor, dünya, magazin ve asayiş gelişmeleri">
   <meta name="robots" content="index, follow">
+
   <title>Ethethor News</title>
 
-  <div class="copyright">
-    © 2026 Ethethor News
-  </div>
-
-</footer>
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 
-    body{background:#f2f4f7;color:#111}
-.share-footer{
-  background:#0b0b0b;
-  color:white;
-  text-align:center;
-  padding:25px;
-  margin-top:30px;
-}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial;
+    }
 
-.share-title{
-  font-size:16px;
-  margin-bottom:10px;
-  font-weight:bold;
-}
+    body{
+      background:#f2f4f7;
+      color:#111;
+    }
 
-.share-buttons a{
-  display:inline-block;
-  margin:5px 8px;
-  padding:8px 12px;
-  background:#222;
-  color:white;
-  text-decoration:none;
-  border-radius:6px;
-  font-size:13px;
-}
+    /* HEADER */
 
-.share-buttons a:hover{
-  background:red;
-}
-
-.copyright{
-  margin-top:15px;
-  font-size:12px;
-  color:#aaa;
-}
-    /* TOP BAR */
     header{
       background:#0b0b0b;
-      color:#fff;
-      padding:15px 0;
+      color:white;
       border-bottom:3px solid red;
       position:sticky;
       top:0;
@@ -66,7 +38,7 @@
     .wrap{
       max-width:1300px;
       margin:auto;
-      padding:0 15px;
+      padding:15px;
       display:flex;
       justify-content:space-between;
       align-items:center;
@@ -75,29 +47,30 @@
     .logo{
       font-size:28px;
       font-weight:bold;
-      letter-spacing:1px;
     }
 
     nav a{
-      color:#fff;
+      color:white;
       text-decoration:none;
       margin-left:18px;
       font-size:14px;
     }
 
-    nav a:hover{color:red}
+    nav a:hover{
+      color:red;
+    }
 
     /* BREAKING */
+
     .breaking{
       background:red;
-      color:#fff;
-      padding:10px;
+      color:white;
+      padding:10px 15px;
       font-weight:bold;
-      overflow:hidden;
-      white-space:nowrap;
     }
 
     /* HERO */
+
     .hero{
       max-width:1300px;
       margin:20px auto;
@@ -106,147 +79,312 @@
       gap:20px;
       padding:0 15px;
     }
+
     .main-news{
-  max-width: 900px;
-  margin: 22px auto;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-}
+      background:white;
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:0 3px 10px rgba(0,0,0,0.1);
+      position:relative;
+    }
 
-.main-news img{
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-}
-  .main-news img{
-  width: 100%;
-  height: 380px;
-  object-fit: cover;
-}
+    .main-news img{
+      width:100%;
+      height:430px;
+      object-fit:cover;
+    }
 
-.main-news h1{
-  font-size: 24px;
-  font-weight: 800;
-  line-height: 1.3;
-}
+    .breaking-tag{
+      position:absolute;
+      top:15px;
+      left:15px;
+      background:red;
+      color:white;
+      padding:7px 12px;
+      border-radius:6px;
+      font-size:12px;
+      font-weight:bold;
+    }
 
-/* MANŞET ROZET */
-    <div class="main-news">
-.breaking-tag{
-  position:absolute;
-  top:15px;
-  left:15px;
-  background:red;
-  color:white;
-  padding:6px 12px;
-  font-size:12px;
-  font-weight:bold;
-  border-radius:6px;
-}
+    .main-content{
+      padding:20px;
+    }
 
-    /* SIDE */
+    .main-content h1{
+      font-size:30px;
+      line-height:1.3;
+      margin-bottom:10px;
+    }
+
+    .main-content p{
+      color:#555;
+      line-height:1.6;
+    }
+
+    /* SIDE NEWS */
+
     .side{
       display:flex;
       flex-direction:column;
-      gap:12px;
+      gap:15px;
     }
 
-   .mini{
-  background:#fff;
-  display:flex;
-  gap:12px;
-  padding:12px;
-  border-radius:12px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.08);
-  align-items:center;
-}
+    .mini{
+      background:white;
+      border-radius:12px;
+      overflow:hidden;
+      display:flex;
+      gap:10px;
+      padding:10px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    }
 
-.mini img{
-  width:120px;
-  height:85px;
-  object-fit:cover;
-  border-radius:10px;
-}
+    .mini img{
+      width:140px;
+      height:100px;
+      object-fit:cover;
+      border-radius:8px;
+    }
 
-.mini h4{
- .main-news h1{
-  font-size:32px;
-}
-  line-height:1.3;
-}
-    /* SECTIONS */
+    .mini h4{
+      font-size:16px;
+      line-height:1.4;
+    }
+
+    /* SECTION */
+
     .section-title{
       max-width:1300px;
-      margin:20px auto 10px;
+      margin:25px auto 15px;
       padding:0 15px;
-      font-size:20px;
+      font-size:22px;
+      font-weight:bold;
       border-left:6px solid red;
       padding-left:10px;
     }
+
+    /* NEWS GRID */
 
     .grid{
       max-width:1300px;
       margin:auto;
       padding:0 15px 30px;
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:15px;
+      grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+      gap:18px;
     }
 
     .card{
-      background:#fff;
-      border-radius:10px;
+      background:white;
+      border-radius:12px;
       overflow:hidden;
-      box-shadow:0 2px 8px rgba(0,0,0,0.06);
-      transition:.3s;
+      box-shadow:0 2px 10px rgba(0,0,0,0.08);
+      transition:0.3s;
     }
 
-    .card:hover{transform:translateY(-4px)}
+    .card:hover{
+      transform:translateY(-5px);
+    }
 
-    .card img{
+    .news-img{
       width:100%;
-      height:160px;
+      height:220px;
       object-fit:cover;
     }
 
-    .card div{padding:10px}
+    .card-content{
+      padding:15px;
+    }
 
     .cat{
-      font-size:12px;
       color:red;
+      font-size:12px;
       font-weight:bold;
     }
 
-    .title{font-size:16px;margin-top:5px}
+    .title{
+      font-size:18px;
+      font-weight:bold;
+      margin-top:6px;
+      line-height:1.4;
+    }
 
-    .text{font-size:13px;color:#555;margin-top:5px}
+    .text{
+      color:#555;
+      font-size:14px;
+      margin-top:8px;
+      line-height:1.5;
+    }
 
-    footer{
-      background:#111;
-      color:#fff;
+    /* SHARE */
+
+    .share-footer{
+      background:#0b0b0b;
+      color:white;
       text-align:center;
-      padding:25px;
-      margin-top:20px;
+      padding:30px 15px;
+    }
+
+    .share-title{
+      font-size:18px;
+      margin-bottom:12px;
+      font-weight:bold;
+    }
+
+    .share-buttons a{
+      display:inline-block;
+      margin:5px;
+      padding:10px 14px;
+      background:#222;
+      color:white;
+      text-decoration:none;
+      border-radius:6px;
+      font-size:14px;
+    }
+
+    .share-buttons a:hover{
+      background:red;
+    }
+
+    .copyright{
+      margin-top:18px;
+      color:#aaa;
+      font-size:13px;
     }
 
     @media(max-width:900px){
-      .hero{grid-template-columns:1fr}
-      nav{display:none}
+
+      .hero{
+        grid-template-columns:1fr;
+      }
+
+      nav{
+        display:none;
+      }
+
+      .main-news img{
+        height:300px;
+      }
+
     }
-.news-img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-}
 
-.card-content{
-  padding:12px;
-}
   </style>
-
 </head>
+
+<body>
+
+<header>
+
+  <div class="wrap">
+
+    <div class="logo">
+      Ethethor News
+    </div>
+
+    <nav>
+      <a href="#">Güncel</a>
+      <a href="#">Ekonomi</a>
+      <a href="#">Spor</a>
+      <a href="#">Magazin</a>
+      <a href="#">Asayiş</a>
+      <a href="#">Dünya</a>
+    </nav>
+
+  </div>
+
+</header>
+
+<div class="breaking">
+  SON DAKİKA • Türkiye ve dünyadan sıcak gelişmeler canlı aktarılıyor...
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+
+  <div class="main-news">
+
+    <div class="breaking-tag">
+      SON DAKİKA
+    </div>
+
+    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c">
+
+    <div class="main-content">
+
+      <h1>
+        Büyük Ekonomik ve Teknolojik Gelişmeler Gündemde
+      </h1>
+
+      <p>
+        Türkiye ve dünyada ekonomi, siyaset ve teknoloji alanında kritik gelişmeler yaşanıyor.
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- SAĞ HABERLER -->
+
+  <div class="side">
+
+    <div class="mini">
+      <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a">
+      <h4>Ekonomide sıcak gelişme yaşandı</h4>
+    </div>
+
+    <div class="mini">
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3">
+      <h4>Dünya liderleri kritik zirvede buluştu</h4>
+    </div>
+
+    <div class="mini">
+      <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e">
+      <h4>Teknoloji dünyasında yeni dönem başladı</h4>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- HABERLER -->
+
+<div class="section-title">
+  Güncel Haberler
+</div>
+
+<div id="newsArea" class="grid"></div>
+
+<!-- FOOTER -->
+
+<footer class="share-footer">
+
+  <div class="share-title">
+    Paylaş
+  </div>
+
+  <div class="share-buttons">
+
+    <a href="https://wa.me/?text=Bu%20haberi%20incele" target="_blank">
+      WhatsApp
+    </a>
+
+    <a href="https://www.instagram.com/" target="_blank">
+      Instagram
+    </a>
+
+    <a href="https://twitter.com/intent/tweet?text=Bu%20haberi%20incele" target="_blank">
+      X (Twitter)
+    </a>
+
+  </div>
+
+  <div class="copyright">
+    © 2026 Ethethor News
+  </div>
+
+</footer>
+
 <script>
 
 function loadNews(){
@@ -294,125 +432,6 @@ function loadNews(){
 loadNews();
 
 </script>
-<body>
-<div class="hero">
-  <div class="main-news"></div>
-</div>
-
-<div id="newsArea" class="grid"></div>
-<header>
-  <div class="wrap">
-    <div class="logo">Ethethor News</div>
-    <nav>
-      <a href="#">Güncel</a>
-      <a href="#">Ekonomi</a>
-      <a href="#">Spor</a>
-      <a href="#">Magazin</a>
-      <a href="#">Asayiş</a>
-      <a href="#">Dünya</a>
-    </nav>
-  </div>
-</header>
-
-<div class="breaking">
-  SON DAKİKA • Türkiye ve dünyadan önemli gelişmeler anlık olarak aktarılıyor...
-</div>
-
-<div class="hero">
-
-  <div class="main-news">
-    <div class="main-news">
-
-  <div class="breaking-tag">SON DAKİKA</div>
-
-  <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c">
-
-  <h1>Büyük Ekonomik ve Teknolojik Gelişmeler Gündemde</h1>
-
-  <p>
-    Türkiye ve dünyada önemli gelişmeler yaşanıyor. Ekonomi, teknoloji ve siyaset alanında kritik değişimler dikkat çekiyor.
-  </p>
-<footer class="share-footer">
-
-  <div class="share-title">Paylaş</div>
-
-  <div class="share-buttons">
-
-    <a href="https://wa.me/?text=Bu%20haberi%20incele" target="_blank">
-      WhatsApp
-    </a>
-
-    <a href="https://www.instagram.com/" target="_blank">
-      Instagram
-    </a>
-
-    <a href="https://twitter.com/intent/tweet?text=Bu%20haberi%20incele" target="_blank">
-      X (Twitter)
-    </a>
-
-  </div>
-</div>
-  </div>
-
-  <div class="side">
-
-```
-<div class="mini">
-  <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a">
-  <h4>Ekonomide sıcak gelişme</h4>
-</div>
-
-<div class="mini">
-  <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3">
-  <h4>Dünya liderleri zirvede</h4>
-</div>
-
-<div class="mini">
-  <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e">
-  <h4>Teknoloji dünyası büyüyor</h4>
-</div>
-```
-
-  </div>
-
-</div>
-
-<div class="section-title">Güncel Haberler</div>
-
-<div class="grid">
-
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a">
-    <div>
-      <div class="cat">EKONOMİ</div>
-      <div class="title">Piyasalarda hareketlilik</div>
-      <div class="text">Küresel piyasalarda dalgalanmalar devam ediyor.</div>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e">
-    <div>
-      <div class="cat">TEKNOLOJİ</div>
-      <div class="title">Yapay zeka büyüyor</div>
-      <div class="text">Yeni nesil AI sistemleri dikkat çekiyor.</div>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3">
-    <div>
-      <div class="cat">DÜNYA</div>
-      <div class="title">Kritik zirve toplantısı</div>
-      <div class="text">Dünya liderleri önemli kararlar aldı.</div>
-    </div>
-  </div>
-
-</div>
-
-<footer>
-  © 2026 Ethethor News - Tüm Hakları Saklıdır
-</footer>
 
 </body>
 </html>
