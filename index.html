@@ -354,7 +354,49 @@
 </div>
 
 <div id="newsArea" class="grid"></div>
+<script>
 
+window.onload = function(){
+
+  let news = JSON.parse(localStorage.getItem("news") || "[]");
+
+  const newsArea = document.getElementById("newsArea");
+
+  newsArea.innerHTML = "";
+
+  news.forEach(function(n){
+
+    newsArea.innerHTML += `
+
+      <div class="card">
+
+        <img src="${n.image}" class="news-img">
+
+        <div class="card-content">
+
+          <div class="cat">
+            ${n.category}
+          </div>
+
+          <div class="title">
+            ${n.title}
+          </div>
+
+          <div class="text">
+            ${n.content}
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+</script>
 <!-- FOOTER -->
 
 <footer class="share-footer">
